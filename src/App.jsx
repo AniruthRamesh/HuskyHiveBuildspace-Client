@@ -24,6 +24,9 @@ import ProductSearchPage from "./pages/ProductSearch/ProductSearchPage";
 import CreateGigPage from "./pages/GigForm/CreateGigPage";
 import GigsCollection from "./pages/GigPage/GigPage";
 import AllUsersPage from "./pages/AllUsersPage/AllUsersPage";
+import AccomodationPost from "./pages/Accomodation/AccomodationPost"
+import AccomodationDisplay from "./pages/Accomodation/AccomodationDisplay"
+
 const store = configureStore(
   {
       reducer:{
@@ -105,6 +108,14 @@ function App() {
               element:<Profile/>
             }
           ]
+        },
+        {
+          path:"/postAccomodation",
+          element:<AccomodationPost/>
+        },
+        {
+          path:"/viewAccomodation",
+          element:<AccomodationDisplay/>
         },
         
 

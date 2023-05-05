@@ -39,6 +39,20 @@ const NavBar = () => {
     navigate("/allUsers")
   }
 
+  const handlePostAnAccomodation = ()=>{
+    if(currentUser){
+      navigate("/postAccomodation")
+    }
+    else{
+      navigate("/login")
+    }
+    
+  }
+
+  const handleViewAccomodation = ()=>{
+    navigate("/viewAccomodation")
+  }
+
 
   return (  
     <nav className="navbar navbar-dark bg-dark fixed-top">
@@ -83,6 +97,20 @@ const NavBar = () => {
   </li>
             </ul>
           </li>
+
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Accomodation
+            </a>
+            <ul className="dropdown-menu dropdown-menu-dark">
+            <li>
+                <button className="btn btn-dark dropdown-item" type="button" onClick={handlePostAnAccomodation}>Post an Accomodation</button>
+              </li>
+              <li>
+                <button className="btn btn-dark dropdown-item" type="button" onClick={handleViewAccomodation}>View All Accomodation</button>
+              </li>
+              </ul>
+              </li>
         </ul>
         <form className="d-flex mt-3" role="search">
           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
