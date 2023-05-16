@@ -1,31 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {useDispatch} from "react-redux";
+import {profileThunk} from "../../services/auth/auth-thunk.js"
+import { useSelector } from 'react-redux';
 
 const CreateGigForm = () => {
+
+  const dispatch = useDispatch()
+
+  const currentUser = useSelector((state) => state.auth.user);
+
+  useEffect(()=>{
+    dispatch(profileThunk())
+  },[])
+
   const navigate = useNavigate()
-  const [projectCardImg, setProjectCardImg] = useState('');
-  const [pp, setPp] = useState('');
-  const [cat, setCat] = useState('');
-  const [userName, setUserName] = useState('');
+  const [pp, setPp] = useState(currentUser.pp);
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [cardDesc, setCardDesc] = useState('');
   const [cardTitle, setCardTitle] = useState('');
   const [price, setPrice] = useState('');
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(null);
   const [deliveryTime, setDeliveryTime] = useState('');
-  const [revisionNumber, setRevisionNumber] = useState('');
-  const [features, setFeatures] = useState([]);
+  const [features, setFeatures] = useState('');
+  const [file,setFile] = useState(null)
+
+  const handleFileChange = (event)=>{
+    setFile(event.target.files[0])
+  }
+
+  const handleUpload = async ()=>{
+    if(!file){
+      alert("No File uploaded")
+      return
+    }
+    const data = new FormData()
+    data.append("file",file)
+    data.append("upload_preset","HuskyHive")
+    try{
+      const res = await axios.post("https://api.cloudinary.com/v1_1/deg4eenzi/image/upload",data)
+      
+      const {url} = res.data;
+      setImages(url)
+
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:4000/api/gigs', {
-        projectCardImg,
+        projectCardImg:images,
         pp,
-        cat,
-        userName,
+        cat:"Selling",
+        userName:currentUser.userName,
         title,
         desc,
         cardDesc,
@@ -33,7 +65,6 @@ const CreateGigForm = () => {
         price,
         images,
         deliveryTime,
-        revisionNumber,
         features,
       });
       navigate("/buyGigs")
@@ -45,57 +76,6 @@ const CreateGigForm = () => {
   return (
     <div className="container  mt-4 mb-4">
       <form onSubmit={handleSubmit} className='mb-2 bg-light'>
-    <div className="mb-3 me-5">
-      <label htmlFor="projectCardImg" className="form-label">
-        Project Card Image:
-      </label>
-      <input
-        type="text"
-        className="form-control"
-        id="projectCardImg"
-        value={projectCardImg}
-        onChange={(e) => setProjectCardImg(e.target.value)}
-      />
-    </div>
-
-    <div className="mb-3 me-5">
-      <label htmlFor="pp" className="form-label">
-        Profile Picture:
-      </label>
-      <input
-        type="text"
-        className="form-control"
-        id="pp"
-        value={pp}
-        onChange={(e) => setPp(e.target.value)}
-      />
-    </div>
-
-    <div className="mb-3 me-5">
-      <label htmlFor="cat" className="form-label">
-        Category:
-      </label>
-      <input
-        type="text"
-        className="form-control"
-        id="cat"
-        value={cat}
-        onChange={(e) => setCat(e.target.value)}
-      />
-    </div>
-
-    <div className="mb-3 me-5">
-      <label htmlFor="userName" className="form-label">
-        Username:
-      </label>
-      <input
-        type="text"
-        className="form-control"
-        id="userName"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
-      />
-    </div>
 
     <div className="mb-3 me-5">
       <label htmlFor="title" className="form-label">
@@ -157,15 +137,14 @@ const CreateGigForm = () => {
   </div>
 
   <div className="mb-3 me-5">
-    <label htmlFor="images" className="form-label">Images:</label>
+    <label htmlFor="images" className="form-label">Image:</label>
     <input
-      type="text"
+      type="file"
       id="images"
       className="form-control"
-      value={images}
-      onChange={(e) => setImages(e.target.value)}
-      multiple
+      onChange={handleFileChange}
     />
+    <button className="btn btn-dark mt-2" onClick={handleUpload}>Upload</button>
   </div>
   <div className="mb-3 me-5">
     <label htmlFor="deliveryTime" className="form-label">Delivery Time:</label>
@@ -178,24 +157,13 @@ const CreateGigForm = () => {
       multiple
     />
   </div>
-  <div className="mb-3 me-5">
-    <label htmlFor="revisionNumber" className="form-label">Revision Number:</label>
-    <input
-      type="number"
-      id="revisionNumber"
-      className="form-control"
-      value={revisionNumber}
-      onChange={(e) => setRevisionNumber(e.target.value)}
-      multiple
-    />
-  </div>
 
   <div className="mb-3 me-5">
       <label htmlFor="features" className="form-label">
         Features
       </label>
-      <input
-        type="text"
+      <textarea
+        
         className="form-control"
         id="features"
         value={features}

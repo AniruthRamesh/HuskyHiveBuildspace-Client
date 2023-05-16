@@ -17,9 +17,6 @@ const NavBar = () => {
     navigate('/buyGigs');
   }
 
-  const handleNewButtonClick = () => {
-    navigate('/productsearch');
-  };
   const handleSellButtonClick = () =>{
     navigate('/createGigForm');
   }

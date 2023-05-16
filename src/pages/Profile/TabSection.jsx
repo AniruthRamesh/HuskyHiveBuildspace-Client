@@ -10,14 +10,14 @@ const TabSection = ({location,mainLocation,canShow}) => {
                     <ion-icon name="person-outline"></ion-icon> <span >Bio</span>
                     </div></Link>
                     
-                    { canShow &&
+                    {/* { canShow &&
                         <>
                             
                             <Link to= {`/profile/${mainLocation}/seller`} style={{textDecoration:"none"}}><div className={`list-group-item list-group-item-action ${location==="seller"?"active":""}` }>
                             <ion-icon name="person-add-outline"></ion-icon> <span>Seller</span>
                             </div></Link>
                         </>
-                    }
+                    } */}
 
                 { canShow &&
                         <>
