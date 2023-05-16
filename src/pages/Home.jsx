@@ -10,7 +10,7 @@ const Home = () => {
             <Featured/>
             
             <AdThoughts/>
-            {currentUser && <GigCardUserGenerator />}
+            {/* {currentUser && <GigCardUserGenerator />} */}
             <ProjectCardGenerator/>
             
          </div>

@@ -53,7 +53,6 @@ const Profile = () => {
                     <Routes>
                         <Route index  element={<Bio location={path[2]} canShow={canShow} currentUser={currentUser} />}/>
                         <Route path="bio" element={<Bio location={path[2]} canShow={canShow} currentUser={currentUser} />}/>
-                        <Route path="seller" element={<Seller location={path[2]} canShow={canShow} Seller={currentUser?currentUser.isSeller:null} currentUser={currentUser}  />}/>
                         <Route path="reviews" element={<ShowReviews location={path[2]} canShow={canShow} Seller={currentUser?currentUser.isSeller:null} currentUser={currentUser}  />}/>
                     </Routes>
                 
@@ -62,7 +61,7 @@ const Profile = () => {
             </div>
 
             <div className="col-3 col-md-3 col-lg-2 order-xxl-3 order-xl-3 order-lg-3 order-md-2 order-sm-2 order-2 mb-4 ms-auto ">
-                <ProfilePic location={path[2]}/>
+                <ProfilePic location={path[2]} canShow={canShow}/>
             </div>
             </div>
         </div>

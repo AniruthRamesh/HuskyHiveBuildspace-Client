@@ -25,9 +25,6 @@ const Featured = () => {
     navigate('/buyGigs');
   }
 
-  const handleNewButtonClick = () => {
-    navigate('/productsearch');
-  };
   const handleSellButtonClick = () =>{
     {userName ? 
           navigate('/createGigForm')
@@ -44,7 +41,7 @@ const Featured = () => {
     <div className="featured">
       <div className="container">
         <div className="left">
-          <h1>Hustle smarter, not harder - Link up with talented student experts to handle your daily grind with ease!</h1>
+          <h1>Buying, Selling, Searching for a temporary accomodation as a student got even easier.</h1>
           <div className="search">
             <div className="d-flex flex-row align-items-center searchInput">
               <div className="col custom-marker">
@@ -52,28 +49,17 @@ const Featured = () => {
                   loop={Infinity}
                   wrapper='b'
                   steps={[
-                    'Code your way to cash',
+                    'Sell your tables',
                     4000,
-                    'Monetize your business expertise',
+                    'Sell your desk',
                     4000,
-                    'Build your way to success ',
+                    'Honestly Sell anything legal',
                     4000,
-                    'Design your own paycheck',
+                    'Search Accomodation',
                     4000,
-                    'Make a living with your words',
+                    'Post here to sublet your apartment',
                     4000,
-                    'Sell your music',
-                    4000,
-                    'Whip up your way to cash',
-                    4000,
-                    'From textbooks to cash', 
-                    4000,
-                    'Earn while you learn',
-                    4000,
-                    'Turn your hobbies into cash',
-                    4000,
-                    'Unleash your earning potential with side hustles',
-                    4000
+                    
                   ]}
                 />
               </div>
@@ -86,7 +72,7 @@ const Featured = () => {
             <span className="me-2">Popular:</span>
             <button className="btn btn-outline-success my-2 my-sm-0 me-1" onClick={handleBuyButtonClick}>Buy</button>
             <button className="btn btn-outline-success my-2 my-sm-0 me-1" onClick={handleSellButtonClick}>Sell</button>
-            <button className="btn btn-outline-success my-2 my-sm-0" onClick={handleNewButtonClick}>Want to know about the Food Products Sold, Click here!</button>
+            
           </div>
         </div>
         <div className="right">

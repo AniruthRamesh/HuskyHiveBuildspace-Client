@@ -83,7 +83,7 @@ const NavBar = () => {
           </>}
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Features
+              Marketplace
             </a>
             <ul className="dropdown-menu dropdown-menu-dark">
             <li>
@@ -91,9 +91,6 @@ const NavBar = () => {
   </li>
   <li>
     <button className="btn btn-dark dropdown-item" type="button" onClick={handleSellButtonClick}>Sell</button>
-  </li>
-  <li>
-    <button className="btn btn-dark dropdown-item" type="button" onClick={handleAdminClick}>Admin-Access Page</button>
   </li>
             </ul>
           </li>
