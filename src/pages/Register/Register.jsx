@@ -5,7 +5,7 @@ import axios from "axios"
 
 const Register = () => {
   const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
-  const HUSKY_API = `${API_BASE}/register`;
+  const HUSKY_API = `${API_BASE}/auth/register`;
 
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ const Register = () => {
         setError("Email or Username is not unique")
       }
     }catch(err){
-      setError(err)
+      setError(err.data)
     }
     
   }
