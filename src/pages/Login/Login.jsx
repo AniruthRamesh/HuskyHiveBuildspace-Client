@@ -21,6 +21,7 @@ const Login = () => {
     try{
       
       const response = await dispatch(loginThunk({userName,password}))
+      console.log(response)
         await dispatch(profileThunk())
       
 
