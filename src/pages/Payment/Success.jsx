@@ -12,10 +12,12 @@ const Success = () => {
   const gigId = searchParams.get("gigId");
   const userId = searchParams.get("userId");
   const [gigData,setGigData] = useState(null)
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+  const HUSKY_API = `${API_BASE}/gigs/${gigId}`;
 
   useEffect(()=>{
     const getData = async ()=>{
-      const response =  await axios.get(`http://localhost:4000/api/gigs/${gigId}`)
+      const response =  await axios.get(`${HUSKY_API}`)
       setGigData(response.data)
     }
 

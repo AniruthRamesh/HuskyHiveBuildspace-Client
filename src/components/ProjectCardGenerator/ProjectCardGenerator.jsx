@@ -6,10 +6,12 @@ import axios from "axios"
 
 const ProjectCardGenerator = () => {
 
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+const HUSKY_API = `${API_BASE}/gigs`;
     const [projects,setProjects] = useState([])
     useEffect(() => {
       const gettingData = async () => {
-        const response = await axios.get("http://localhost:4000/api/gigs");
+        const response = await axios.get(`${HUSKY_API}`);
         setProjects(response.data);
       };
   

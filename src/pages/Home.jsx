@@ -8,7 +8,7 @@ const Home = () => {
     return (  
         <div>
             <Featured/>
-            
+            {console.log(import.meta.env.VITE_REACT_APP_API_BASE)}
             <AdThoughts/>
             {/* {currentUser && <GigCardUserGenerator />} */}
             <ProjectCardGenerator/>

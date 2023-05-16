@@ -18,16 +18,20 @@ const Gig = () => {
     const [user,setUser] = useState({})
     const [profile,setProfile] = useState({})
 
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+    const HUSKY_API = `${API_BASE}/gigs/${id}`;
+    
     useEffect(()=>{
         const getData = async ()=>{
-            const response = await axios.get(`http://localhost:4000/api/gigs/${id}`)
+            const response = await axios.get(`${HUSKY_API}`)
             setData(response.data)
-
-            getUserData(response.data.userName);
+            const userName = response.data.userName;
+            const HUSKY_API1 = `${API_BASE}/users/byUserName/${userName}`;
+            getUserData(userName,HUSKY_API1);
         }
 
-        const getUserData = async (userName) => {
-            const response = await axios.get(`http://localhost:4000/api/users/byUserName/${userName}`);
+        const getUserData = async (userName,HUSKY_API1) => {
+            const response = await axios.get(`${HUSKY_API1}`);
             setUser(response.data);
         }
         getData();
@@ -39,7 +43,7 @@ const Gig = () => {
         <div className="container">
             <div className="d-flex flex-wrap">
 
-                <GigTitle data={data}/>
+                <GigTitle data={data} user={user}/>
                 <GigSideCard data={data}/>
 
             </div>

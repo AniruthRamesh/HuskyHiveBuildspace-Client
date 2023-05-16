@@ -5,8 +5,11 @@ import { useState,useEffect } from "react";
 import {Link} from "react-router-dom";
 
 const ShowReviews = ({location,canShow,Seller,currentUser}) => {
+
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+  const HUSKY_API = `${API_BASE}/reviews/user/${currentUser.userName}`;
     const getData = async()=>{
-        const response = await axios.get(`http://localhost:4000/api/reviews/user/${currentUser.userName}`)
+        const response = await axios.get(`${HUSKY_API}`)
         setReviewData(response.data)
     }
     const [reviewData,setReviewData] =  useState(getData())

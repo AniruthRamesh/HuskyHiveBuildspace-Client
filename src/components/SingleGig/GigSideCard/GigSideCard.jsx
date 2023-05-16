@@ -25,8 +25,10 @@ const GigSideCard = ({data}) => {
     if(!currentUser){
       navigate("/login")
     }
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+const HUSKY_API = `${API_BASE}/payment/create-checkout-session`;
 
-    const response = await axios.post("http://localhost:4000/api/payment/create-checkout-session",{
+    const response = await axios.post(`${HUSKY_API}`,{
       stripeData:{price_data: {
         currency: 'usd',
         product_data: {
@@ -63,7 +65,7 @@ const GigSideCard = ({data}) => {
           <div className="col-6">
             <div className="d-flex align-items-center">
               <ion-icon name="time-outline"></ion-icon>
-              <span className="ms-2 fw-bold text-dark">2 {data.delivery} Delivery</span>
+              <span className="ms-2 fw-bold text-dark">{data.delivery} day Delivery</span>
             </div>
           </div>
           <div className="col-6">

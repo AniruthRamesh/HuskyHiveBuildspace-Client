@@ -12,10 +12,12 @@ const ProfilePic = ({location,canShow}) => {
     const [bio,setBio] = useState(""); 
     const [file,setFile] = useState(null)
     const [pp,setPp] = useState(null)
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+    const HUSKY_API = `${API_BASE}/users/${location}`;
 
     useEffect(()=>{
         const getData = async()=>{
-          const response = await axios.get(`http://localhost:4000/api/users/${location}`)
+          const response = await axios.get(`${HUSKY_API}`)
           setUserName(response.data.userName)
           setBio(response.data.bio)
           setAllData(response.data)

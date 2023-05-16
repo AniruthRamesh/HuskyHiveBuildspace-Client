@@ -12,6 +12,9 @@ const UsersPage = () => {
   const user = useSelector((state) => state.auth.user);
   const isAdmin = user.isAdmin?user.isAdmin:false;
 
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+const HUSKY_API = `${API_BASE}/auth/getAllUsers`;
+
   const fetchUsers = async () => {
     try {
       console.log(isAdmin);
@@ -19,7 +22,7 @@ const UsersPage = () => {
         throw new Error("You do not have permission to view the users");
       }
       else{
-      const response = await axios.get("http://localhost:4000/api/auth/getAllUsers");
+      const response = await axios.get(`${HUSKY_API}`);
       console.log(response);
       setUsers(response.data);
       setIsLoading(false);

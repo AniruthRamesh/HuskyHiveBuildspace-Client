@@ -33,8 +33,10 @@ const AddReview = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+const HUSKY_API = `${API_BASE}/reviews/send`;
     const postReview = async ()=>{
-        const response = await axios.post("http://localhost:4000/api/reviews/send",{userName:currentUser.userName,gigId:path,star:parseInt(rating),reviewTitle:title,review:review,userId:currentUser._id})
+        const response = await axios.post(`${HUSKY_API}`,{userName:currentUser.userName,gigId:path,star:parseInt(rating),reviewTitle:title,review:review,userId:currentUser._id})
         
     }
     if (rating && title && review) {

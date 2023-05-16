@@ -1,6 +1,6 @@
 import "./GigTitle.scss"
 
-const GigTitle = ({data}) => {
+const GigTitle = ({data,user}) => {
     
     return ( 
         <div className="container col-12 col-lg-8 col-xxl-8 color1 mt-3">
@@ -11,7 +11,7 @@ const GigTitle = ({data}) => {
                     <div className="mt-3">
                                 <img
                         className="pp"
-                        src={`${data.pp}`}
+                        src={`${user.pp}`}
                         alt=""
                         />
                         <span className="fw-bold ms-4">

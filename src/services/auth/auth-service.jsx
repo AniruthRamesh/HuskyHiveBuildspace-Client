@@ -1,5 +1,7 @@
 import axios from  "axios"
-const SERVER_API_URL = "http://localhost:4000/api/auth"
+const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+
+const SERVER_API_URL = `${API_BASE}/auth`;
 
 const api = axios.create({ withCredentials: true });
 

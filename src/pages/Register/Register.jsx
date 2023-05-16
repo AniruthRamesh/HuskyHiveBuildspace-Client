@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios"
 
 const Register = () => {
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+  const HUSKY_API = `${API_BASE}/register`;
+
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +19,7 @@ const Register = () => {
 
   const serverLogic = async ()=>{
     try{
-      const response = await axios.post("http://localhost:4000/api/auth/register",{userName,email,password,isSeller},{withCredentials:true})
+      const response = await axios.post(`${HUSKY_API}`,{userName,email,password,isSeller},{withCredentials:true})
       const res = response.status
       if(res===201){
         navigate("/login")

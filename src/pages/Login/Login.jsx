@@ -19,10 +19,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try{
-      // const res = await axios.post("http://localhost:4000/api/auth/login",{userName,password},{withCredentials:true})
-      // localStorage.setItem("currentUser",res.data.userName)
-      // dispatch(login({id:res.data._id,userName:res.data.userName}))
-      // navigate(`/profile/${res.data._id}`)
+      
       const response = await dispatch(loginThunk({userName,password}))
         await dispatch(profileThunk())
       

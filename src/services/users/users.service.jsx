@@ -1,7 +1,8 @@
 import axios from 'axios';
-// const API_BASE = process.env.REACT_APP_API_BASE_A9;
+// const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;_A9;
 // const TUITS_API = `${API_BASE}/tuits`;
-const HUSKY_API = 'http://localhost:4000/api/users';
+const API_BASE =import.meta.env.VITE_REACT_APP_API_BASE;
+const HUSKY_API = `${API_BASE}/users`;
 const api = axios.create({ withCredentials: true });
 
 export const findUser = async (uid) => {

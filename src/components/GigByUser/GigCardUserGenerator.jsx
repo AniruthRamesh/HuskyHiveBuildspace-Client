@@ -8,11 +8,13 @@ const GigCardUserGenerator = () => {
   const [gigs, setGigs] = useState([]);
   const userName = useSelector((state) => state.auth.user?.userName);
 
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+  const HUSKY_API = `${API_BASE}/gigs/users${userName}`;
   useEffect(() => {
     const fetchGigs = async () => {
       try {
         console.log(userName)
-        const response = await axios.get(`http://localhost:4000/api/gigs/user/${userName}`);
+        const response = await axios.get(`${HUSKY_API}`);
         console.log(response.data);
         setGigs(response.data);
         

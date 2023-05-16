@@ -1,7 +1,9 @@
 import axios from 'axios';
-// const API_BASE = process.env.REACT_APP_API_BASE_A9;
+// const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;_A9;
 // const TUITS_API = `${API_BASE}/tuits`;
-const HUSKY_API = 'localhost:4000/api/reviews';
+const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+const HUSKY_API = `${API_BASE}/reviews`;
+
 
 export const createReview= async (reviews) => {
     const response = await axios.post(HUSKY_API, reviews)

@@ -17,10 +17,11 @@ const Bio = ({location,canShow }) => {
     const [address,setAddress] = useState(currentUser?currentUser.address:null); 
     const [bio,setBio] = useState(currentUser?currentUser.bio:null); 
     const [mobile,setMobile] = useState(currentUser?currentUser.mobile:null)
-    
+    const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+    const HUSKY_API = `${API_BASE}/users/${location}`;
     useEffect(()=>{
         const getData = async()=>{
-          const response = await axios.get(`http://localhost:4000/api/users/${location}`)
+          const response = await axios.get(`${HUSKY_API}`)
           setCurrentUser(response.data)
           setFirstName(response.data.firstName)
           setLastName(response.data.lastName)

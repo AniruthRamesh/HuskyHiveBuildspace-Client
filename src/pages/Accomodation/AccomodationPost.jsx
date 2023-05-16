@@ -21,9 +21,11 @@ const AccomodationPost = () => {
         });
       };
     
+      const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+      const HUSKY_API = `${API_BASE}/accomodation/newAccomodation`;
       const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await axios.post("http://localhost:4000/api/accomodation/newAccomodation",formData)
+        const response = await axios.post(`${HUSKY_API}`,formData)
         console.log(response)
         if(response.status===201){
             navigate("/viewAccomodation")

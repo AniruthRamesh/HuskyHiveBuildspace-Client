@@ -52,9 +52,11 @@ const AccommodationCard = ({ accommodation }) => {
 const AccomodationDisplay = () => {
   const [data, setData] = useState([]);
 
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+const HUSKY_API = `${API_BASE}/accomodation/`;
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("http://localhost:4000/api/accomodation/");
+      const response = await axios.get(`${HUSKY_API}`);
       setData(response.data);
     };
 

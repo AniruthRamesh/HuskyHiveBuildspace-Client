@@ -12,10 +12,12 @@ const Reviews = () => {
   let location = ""
   const path =  pathname.split("/")[2]
   const stars = [];
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+const HUSKY_API = `${API_BASE}/reviews/${path}`;
   useEffect(()=>{
 
     const getData = async ()=>{
-      const response = await axios.get(`http://localhost:4000/api/reviews/${path}`)
+      const response = await axios.get(`${HUSKY_API}`)
       setReviews(response.data)
     }
     

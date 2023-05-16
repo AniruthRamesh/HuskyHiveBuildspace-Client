@@ -50,10 +50,13 @@ const CreateGigForm = () => {
     }
   }
 
+  const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE;
+const HUSKY_API = `${API_BASE}/gigs`;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/gigs', {
+      const response = await axios.post(`${HUSKY_API}`, {
         projectCardImg:images,
         pp:pp,
         cat:"Selling",
