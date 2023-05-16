@@ -16,7 +16,7 @@ const GigCardGenerator = () => {
     }, []);
   
     return (
-      <div className="container text-center my-5">
+      <div className="container text-center my-5 mb-3">
         <div className="container row">
           {projects.length > 0 ? (
             projects.map((project) => (

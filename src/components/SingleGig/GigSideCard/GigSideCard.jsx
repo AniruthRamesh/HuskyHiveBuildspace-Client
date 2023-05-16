@@ -18,6 +18,8 @@ const GigSideCard = ({data}) => {
     dispatch(profileThunk())
   },[])
 
+  console.log(data)
+
   
   const handlePayment = async ()=>{
     if(!currentUser){
@@ -75,11 +77,13 @@ const GigSideCard = ({data}) => {
           <div className="col-12">
             <h5 className="fw-bold mb-3">Features:</h5>
             <div className="align-items-center mb-3">
-              {data.features?.map(feature=><div>
-                <FaCheck className="green-tick me-2" style={{color:"lightblue"}} />
-                <span className="text-secondary">{feature}</span>
-                <br />
-              </div>)}
+            {data.features && data.features[0].split('\n').map((line, index) => (
+      <div key={index}>
+        <FaCheck className="green-tick me-2" style={{color:"lightblue"}} />
+        <span className="text-secondary">{line}</span>
+        <br />
+      </div>
+    ))}
               {/* <FaCheck className="green-tick me-2" style={{color:"lightblue"}} />
               <span className="text-secondary">Prompt writing</span> */}
             </div>

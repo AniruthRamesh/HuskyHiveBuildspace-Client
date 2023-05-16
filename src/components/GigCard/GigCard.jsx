@@ -3,7 +3,7 @@ import "./GigCard.scss"
 function GigCard({ card }) {
     console.log(card)
     return (
-        <div className="gigCard shadow">
+        <div className="gigCard shadow mb-3">
             <img src={`${card.projectCardImg}`} alt="" />
             <div className="info">
               <img src={`${card.pp}`} alt="" />

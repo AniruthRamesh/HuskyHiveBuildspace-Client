@@ -16,7 +16,7 @@ const CreateGigForm = () => {
   },[])
 
   const navigate = useNavigate()
-  const [pp, setPp] = useState(currentUser.pp);
+  const [pp, setPp] = useState(currentUser?currentUser.pp:'');
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [cardDesc, setCardDesc] = useState('');
@@ -55,7 +55,7 @@ const CreateGigForm = () => {
     try {
       const response = await axios.post('http://localhost:4000/api/gigs', {
         projectCardImg:images,
-        pp,
+        pp:pp,
         cat:"Selling",
         userName:currentUser.userName,
         title,
@@ -144,7 +144,7 @@ const CreateGigForm = () => {
       className="form-control"
       onChange={handleFileChange}
     />
-    <button className="btn btn-dark mt-2" onClick={handleUpload}>Upload</button>
+    <button type="button" className="btn btn-dark mt-2" onClick={handleUpload}>Upload</button>
   </div>
   <div className="mb-3 me-5">
     <label htmlFor="deliveryTime" className="form-label">Delivery Time:</label>

@@ -32,7 +32,7 @@ const GigTitle = ({data}) => {
                     </div>
                     <div>
                             <img className="img-fluid"
-                    src={`${data.images?data.images[0]:``}`}
+                    src={`${data.images}`}
                     alt=""
                     />
                     </div>
